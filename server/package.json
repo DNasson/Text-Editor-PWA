@@ -4,11 +4,11 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-        "server": "nodemon server.js --ignore client"
+        "server": "node server.js"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "author": "dnasson",
+    "license": "MIT",
     "dependencies": {
         "express": "^4.17.1"
     },
