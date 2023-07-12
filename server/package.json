@@ -4,7 +4,7 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-        "server": "node server.js"
+        "server": "server.js"
     },
     "keywords": [],
     "author": "dnasson",
