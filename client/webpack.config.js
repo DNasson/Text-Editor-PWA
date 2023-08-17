@@ -6,35 +6,41 @@ const { InjectManifest } = require("workbox-webpack-plugin");
 module.exports = () => {
   return {
     mode: "development",
+    // entry point for the application
     entry: {
       main: "./src/js/index.js",
       install: "./src/js/install.js",
     },
     output: {
+      // output directory
       filename: "[name].bundle.js",
       path: path.resolve(__dirname, "dist"),
     },
     plugins: [
       new HtmlWebpackPlugin({
         template: "index.html",
-        title: "Jate",
+        title: "JATE",
       }),
 
       new InjectManifest({
         swSrc: "./src-sw.js",
-        swDest: "sw.js",
+        swDest: "src-sw.js",
       }),
 
+      // Creates a manifest.json file.
       new WebpackPwaManifest({
-        name: "Jate",
-        short_name: "JATE",
-        description: "Jate is a simple note taking app",
-        background_color: "#ffffff",
-        theme_color: "#2196f3",
-        crossorigin: "use-credentials",
+        fingerprints: false,
+        inject: true,
+        name: "Contact Cards",
+        short_name: "Contact",
+        description: "Never forget your contacts!",
+        background_color: "#225ca3",
+        theme_color: "#225ca3",
+        start_url: "./",
+        publicPath: "./",
         icons: [
           {
-            src: path.resolve("src/assets/icon.png"),
+            src: path.resolve("src/images/logo.png"),
             sizes: [96, 128, 192, 256, 384, 512],
             destination: path.join("assets", "icons"),
           },
@@ -43,20 +49,24 @@ module.exports = () => {
     ],
 
     module: {
+      // CSS loaders
       rules: [
         {
           test: /\.css$/i,
           use: ["style-loader", "css-loader"],
         },
-
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
+          // We use babel-loader in order to use ES6.
           use: {
             loader: "babel-loader",
             options: {
-              plugins: ["@babel/plugin-transform-runtime"],
               presets: ["@babel/preset-env"],
+              plugins: [
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/transform-runtime",
+              ],
             },
           },
         },
