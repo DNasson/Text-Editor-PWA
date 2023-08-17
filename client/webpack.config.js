@@ -31,9 +31,9 @@ module.exports = () => {
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
-        name: "Contact Cards",
-        short_name: "Contact",
-        description: "Never forget your contacts!",
+        name: "jate Cards",
+        short_name: "jate",
+        description: "Never forget your jates!",
         background_color: "#225ca3",
         theme_color: "#225ca3",
         start_url: "./",
